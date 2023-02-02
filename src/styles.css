@@ -1,5 +1,5 @@
 body {
-  background-image: url("images/snowing_1.jpg");
+  background-image: url("../images/snowing_1.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -63,7 +63,7 @@ i.fa-arrow-up {
 }
 
 .warning {
-  background-image: url("images/message-cloud2.png");
+  background-image: url("../images/message-cloud2.png");
   background-position: center;
   background-size: 180px;
   background-repeat: no-repeat;

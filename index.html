@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="src/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/08756f5483.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chela+One&family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Chela+One&family=Quicksand:wght@300;400;500;600;700&display=swap");
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1>The Best Weather Forecast</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8">
+          <div class="time">⌚</div>
+          <div class="date">📅</div>
+          <form id="citySearch">
+            <div class="row">
+              <div class="col-5">
+                <input
+                  type="search"
+                  id="city-input"
+                  placeholder="City"
+                  autofocus="on"
+                  autocomplete="off"
+                  class="form-control shadow-sm"
+                />
+              </div>
+              <div class="col-4">
+                <input
+                  type="Submit"
+                  value="Search"
+                  class="form-control btn btn-primary shadow-sm"
+                />
+              </div>
+              <div class="col-3">
+                <button
+                  class="btn btn-success shadow-sm w-100"
+                  id="current-location-button"
+                >
+                  GPS
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-4">
+          <section class="Lately-choosen">
+            <h5>Last selections:</h5>
+            <ul>
+              <li>London</li>
+              <li>Roma</li>
+              <li>New York</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckDefault"
+        />
+        <label class="form-check-label" for="flexSwitchCheckDefault">
+          °C | °F</label
+        >
+      </div>
+      <h2></h2>
+      <section class="today-weather">
+        <div class="row today-weather">
+          <div class="col-2 weather-icon-today">
+            <i class="fa-solid fa-sun"></i>
+            <i class="fa-solid fa-arrow-up"></i>
+          </div>
+          <div class="col weather-details-today">
+            <span class="temp-today" id="temp-today"></span>
+            <span class="units">
+              <a href="#" id="degreesC">°C</a>
+              |
+              <a href="#" id="degreesF">°F</a>
+            </span>
+            <div class="humidity">humidity: <span id="humidity"></span>%</div>
+            <div class="wind">wind: <span id="wind"></span> km/h</div>
+            <div class="description" id="description"></div>
+          </div>
+          <div class="col">
+            <div class="warning">⚡<br />Warning!<br />Snow on the road!</div>
+          </div>
+        </div>
+      </section>
+      <section class="week-weather">
+        <div class="row">
+          <div class="col-3 week-weather">
+            <p class="weekday">01.12 <br />Mon</p>
+            <div class="weather-icon">❄</div>
+            <p class="temp">-2℃</p>
+          </div>
+          <div class="col-3 week-weather">
+            <p class="weekday">02.12 <br />Mon</p>
+            <div class="weather-icon">❄</div>
+            <p class="temp">-2℃</p>
+          </div>
+          <div class="col-3 week-weather">
+            <p class="weekday">03.12 <br />Mon</p>
+            <div class="weather-icon">❄</div>
+            <p class="temp">-2℃</p>
+          </div>
+          <div class="col-3 week-weather">
+            <p class="weekday">04.12 <br />Mon</p>
+            <div class="weather-icon">❄</div>
+            <p class="temp">-2℃</p>
+          </div>
+          <div class="col-3 week-weather">
+            <p class="weekday">05.12 <br />Mon</p>
+            <div class="weather-icon">❄</div>
+            <p class="temp">-2℃</p>
+          </div>
+          <div class="col-3 week-weather">
+            <p class="weekday">06.12 <br />Mon</p>
+            <div class="weather-icon">❄</div>
+            <p class="temp">-2℃</p>
+          </div>
+        </div>
+      </section>
+      <a class="long-term" href="">Long term weather forecast</a>
+      <footer>Coded by Agnieszka Galinska<br />2022</footer>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>

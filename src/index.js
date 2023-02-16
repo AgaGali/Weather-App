@@ -60,7 +60,7 @@ function displayWeatherCondition(response) {
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = response.data.temperature.humidity;
-  windSpeedElement.innerHTML = response.data.wind.speed;
+  windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   weatherIconElement.setAttribute("src", response.data.condition.icon_url);
   weatherIconElement.setAttribute("alt", response.data.condition.icon);
 }
@@ -101,10 +101,13 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("Warsaw");
 
+let celciusTemperature = null;
+
 function changeDegrees(event) {
   event.preventDefault();
   let temp = document.querySelector("span.temp-today");
-  let fahrenheitTemperature = Math.round((-5 * 9) / 5 + 32);
+  console.log(temp);
+  let fahrenheitTemperature = Math.round(("span.temp-today" * 9) / 5 + 32);
   temp.innerHTML = fahrenheitTemperature;
 }
 

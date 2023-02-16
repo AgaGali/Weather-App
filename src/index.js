@@ -49,16 +49,20 @@ let fullDate = document.querySelector("div.date");
 fullDate.innerHTML = setDay(date);
 
 function displayWeatherCondition(response) {
-  document.querySelector("h2").innerHTML = response.data.name;
-  document.querySelector("#temp-today").innerHTML = Math.round(
-    response.data.main.temp
-  );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+  let cityElement = document.querySelector("h2");
+  let temperatureElement = document.querySelector("#temp-today");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windSpeedElement = document.querySelector("#wind");
+  let weatherIconElement = document.querySelector("#weatherIcon");
+  let windDirectionElement = document.querySelector("#windDirection");
+  cityElement.innerHTML = response.data.city;
+  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = response.data.temperature.humidity;
+  windSpeedElement.innerHTML = response.data.wind.speed;
+  weatherIconElement.setAttribute("src", response.data.condition.icon_url);
+  weatherIconElement.setAttribute("alt", response.data.condition.icon);
 }
 
 function searchCity(city) {
@@ -78,9 +82,12 @@ let searchForm = document.querySelector("#citySearch");
 searchForm.addEventListener("submit", handleSubmit);
 
 function searchLocation(position) {
+  console.log(position);
+  let longitude = position.coords.longitude;
+  let latitude = position.coords.latitude;
   let apiKey = "t2a4aa0f7820odf4388a012be243e28a";
 
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${apiKey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
 
@@ -92,7 +99,7 @@ function getCurrentLocation(event) {
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
-searchCity("New york");
+searchCity("Warsaw");
 
 function changeDegrees(event) {
   event.preventDefault();

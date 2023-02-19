@@ -56,8 +56,10 @@ function displayWeatherCondition(response) {
   let windSpeedElement = document.querySelector("#wind");
   let weatherIconElement = document.querySelector("#weatherIcon");
   let windDirectionElement = document.querySelector("#windDirection");
+  celciusTemperature = Math.round(response.data.temperature.current);
+
+  temperatureElement.innerHTML = celciusTemperature;
   cityElement.innerHTML = response.data.city;
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = response.data.temperature.humidity;
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
@@ -99,26 +101,25 @@ function getCurrentLocation(event) {
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
-searchCity("Warsaw");
-
 let celciusTemperature = null;
 
-function changeDegrees(event) {
+function displayFahrenheitTemp(event) {
   event.preventDefault();
-  let temp = document.querySelector("span.temp-today");
-  console.log(temp);
-  let fahrenheitTemperature = Math.round(("span.temp-today" * 9) / 5 + 32);
-  temp.innerHTML = fahrenheitTemperature;
+  let fahrenheitTemperature = Math.round((celciusTemperature * 9) / 5 + 32);
+  let temperatureElement = document.querySelector("#temp-today");
+  temperatureElement.innerHTML = fahrenheitTemperature;
 }
 
 let fahrenheitSwitch = document.querySelector("#degreesF");
-fahrenheitSwitch.addEventListener("click", changeDegrees);
+fahrenheitSwitch.addEventListener("click", displayFahrenheitTemp);
 
-function changeDegreesToCelcius(event) {
+function displayCelciusTemp(event) {
   event.preventDefault();
-  let temp = document.querySelector("span.temp-today");
-  temp.innerHTML = "-5";
+  let temperatureElement = document.querySelector("#temp-today");
+  temperatureElement.innerHTML = celciusTemperature;
 }
 
 let celciusSwitch = document.querySelector("#degreesC");
-celciusSwitch.addEventListener("click", changeDegreesToCelcius);
+celciusSwitch.addEventListener("click", displayCelciusTemp);
+
+searchCity("Warsaw");

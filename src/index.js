@@ -55,7 +55,6 @@ function displayWeatherCondition(response) {
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#wind");
   let weatherIconElement = document.querySelector("#weatherIcon");
-  let windDirectionElement = document.querySelector("#windDirection");
   celciusTemperature = Math.round(response.data.temperature.current);
 
   temperatureElement.innerHTML = celciusTemperature;
@@ -65,6 +64,8 @@ function displayWeatherCondition(response) {
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   weatherIconElement.setAttribute("src", response.data.condition.icon_url);
   weatherIconElement.setAttribute("alt", response.data.condition.icon);
+
+  cityAlert = response.data.city;
 }
 
 function searchCity(city) {
@@ -105,6 +106,8 @@ let celciusTemperature = null;
 
 function displayFahrenheitTemp(event) {
   event.preventDefault();
+  celciusSwitch.classList.remove("active");
+  fahrenheitSwitch.classList.add("active");
   let fahrenheitTemperature = Math.round((celciusTemperature * 9) / 5 + 32);
   let temperatureElement = document.querySelector("#temp-today");
   temperatureElement.innerHTML = fahrenheitTemperature;
@@ -115,11 +118,18 @@ fahrenheitSwitch.addEventListener("click", displayFahrenheitTemp);
 
 function displayCelciusTemp(event) {
   event.preventDefault();
+  celciusSwitch.classList.add("active");
+  fahrenheitSwitch.classList.remove("active");
   let temperatureElement = document.querySelector("#temp-today");
   temperatureElement.innerHTML = celciusTemperature;
 }
 
 let celciusSwitch = document.querySelector("#degreesC");
 celciusSwitch.addEventListener("click", displayCelciusTemp);
+
+let cityAlert = null;
+if (cityAlert === "Warsaw") {
+  alert("Welcome");
+}
 
 searchCity("Warsaw");

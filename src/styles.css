@@ -22,14 +22,18 @@ body {
   font-size: 54px;
   font-weight: 500;
 }
-
+.weather-details-today {
+  margin-left: 8pt;
+}
 .weather-details-today .units {
   position: relative;
   top: -23px;
   font-size: 23px;
   font-weight: 500;
 }
-span a {
+
+.weather-details-today .active {
+  cursor: default;
   color: rgb(64, 64, 82);
   text-decoration: none;
 }
@@ -60,15 +64,14 @@ li {
 i {
   margin: 20px;
 }
-i.fa-sun {
-  font-size: 45px;
-  color: rgb(75, 145, 236);
-  display: block;
+.today-weather {
+  margin: 10pt 0;
 }
-i.fa-arrow-up {
-  font-size: 45px;
-  color: rgb(75, 145, 236);
-  display: block;
+.weatherIcon {
+  margin: -8pt -6pt;
+}
+.humidityWindDescription {
+  margin: 10pt 0;
 }
 
 .warning {

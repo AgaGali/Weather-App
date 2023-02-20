@@ -95,24 +95,22 @@
       </div>
       <h2></h2>
       <section class="today-weather">
-        <div class="row today-weather">
+        <div class="row">
           <div class="col-2 weather-icon-today">
-            <img src="#" alt="clear" id="weatherIcon" />
-            <i class="fa-solid fa-arrow-up" id="windDirection"></i>
+            <img src="#" alt="clear" id="weatherIcon" class="weatherIcon" />
           </div>
-          <div class="col weather-details-today">
+          <div class="col-4 weather-details-today">
             <span class="temp-today" id="temp-today"></span>
             <span class="units">
               <a href="#" id="degreesC" class="active">°C</a>
               |
               <a href="#" id="degreesF">°F</a>
             </span>
+          </div>
+          <div class="col-4 humidityWindDescription">
             <div class="humidity">humidity: <span id="humidity"></span>%</div>
             <div class="wind">wind: <span id="wind"></span> km/h</div>
             <div class="description" id="description"></div>
-          </div>
-          <div class="col">
-            <div class="warning">⚡<br />Warning!<br />Snow on the road!</div>
           </div>
         </div>
       </section>

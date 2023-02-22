@@ -67,24 +67,11 @@ i {
 .today-weather {
   margin: 10pt 0;
 }
-.weatherIcon {
-  margin: -8pt -6pt;
-}
+
 .humidityWindDescription {
   margin: 10pt 0;
 }
 
-.warning {
-  background-image: url("../images/message-cloud2.png");
-  background-position: center;
-  background-size: 180px;
-  background-repeat: no-repeat;
-  width: 180px;
-  height: 180px;
-  text-align: center;
-  display: block;
-  padding: 20px;
-}
 .fa-message {
   font-size: 60px;
 }
@@ -94,17 +81,16 @@ div.week-weather {
   border: 2px solid rgba(116, 150, 205, 1);
   border-radius: 44px;
   text-align: center;
-  padding: 15px;
+  padding: 10px;
   height: fit-content;
   width: fit-content;
   margin: 10px 5px;
 }
-p.weekday {
-  margin: 0px;
+
+.week-weather-temp-min {
+  color: rgb(87, 87, 148);
 }
-p.temp {
-  margin: 0px;
-}
+
 .long-term {
   display: block;
   text-align: right;

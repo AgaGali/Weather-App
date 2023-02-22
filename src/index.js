@@ -48,6 +48,37 @@ function setDay(trueDay) {
 let fullDate = document.querySelector("div.date");
 fullDate.innerHTML = setDay(date);
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = '<div class="row">';
+  let days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    
+      <div class="col-2 week-weather">
+        <div class="weekday">
+          01.12 <br />
+          ${day}
+        </div>
+        <img
+          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png"
+          alt=""
+          width="50"
+        />
+        <div class="temp">
+          <span class="week-weather-temp-max">-2°</span>
+          <span class="week-weather-temp-min">-10°</span>
+        </div>
+      </div>
+    `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayWeatherCondition(response) {
   let cityElement = document.querySelector("h2");
   let temperatureElement = document.querySelector("#temp-today");
@@ -133,3 +164,4 @@ if (cityAlert === "Warsaw") {
 }
 
 searchCity("Warsaw");
+displayForecast();

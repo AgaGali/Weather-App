@@ -48,7 +48,9 @@ function setDay(trueDay) {
 let fullDate = document.querySelector("div.date");
 fullDate.innerHTML = setDay(date);
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = '<div class="row">';
@@ -79,6 +81,15 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let longitude = coordinates.longitude;
+  let latitude = coordinates.latitude;
+  let apiKey = "t2a4aa0f7820odf4388a012be243e28a";
+
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayWeatherCondition(response) {
   let cityElement = document.querySelector("h2");
   let temperatureElement = document.querySelector("#temp-today");
@@ -95,8 +106,7 @@ function displayWeatherCondition(response) {
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   weatherIconElement.setAttribute("src", response.data.condition.icon_url);
   weatherIconElement.setAttribute("alt", response.data.condition.icon);
-
-  cityAlert = response.data.city;
+  getForecast(response.data.coordinates);
 }
 
 function searchCity(city) {
@@ -158,10 +168,4 @@ function displayCelciusTemp(event) {
 let celciusSwitch = document.querySelector("#degreesC");
 celciusSwitch.addEventListener("click", displayCelciusTemp);
 
-let cityAlert = null;
-if (cityAlert === "Warsaw") {
-  alert("Welcome");
-}
-
 searchCity("Warsaw");
-displayForecast();

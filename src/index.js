@@ -81,7 +81,7 @@ function displayForecast(response) {
           src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
             forecastDay.condition.icon
           }.png"
-          alt=""
+          alt="weather icon"
           width="50"
         />
         <div class="temp">
@@ -109,6 +109,70 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
+function changeBackground(description) {
+  console.log(description);
+  if (description === "clear sky") {
+    document
+      .getElementById("fullPage")
+      .setAttribute("style", "background-image: url('./images/clear-sky.jpg')");
+  }
+  if (description === "few clouds") {
+    document
+      .getElementById("fullPage")
+      .setAttribute(
+        "style",
+        "background-image: url('./images/few-clouds.jpg')"
+      );
+  }
+  if (description === "scattered clouds") {
+    document
+      .getElementById("fullPage")
+      .setAttribute(
+        "style",
+        "background-image: url('./images/scattered-clouds.jpg')"
+      );
+  }
+  if (description === "broken clouds" || description === "overcast clouds") {
+    document
+      .getElementById("fullPage")
+      .setAttribute(
+        "style",
+        "background-image: url('./images/broken-clouds.jpg')"
+      );
+  }
+  if (description === "shower rain") {
+    document
+      .getElementById("fullPage")
+      .setAttribute(
+        "style",
+        "background-image: url('./images/shower-rain.jpg')"
+      );
+  }
+  if (description === "rain") {
+    document
+      .getElementById("fullPage")
+      .setAttribute("style", "background-image: url('./images/rain.jpg')");
+  }
+  if (description === "thunderstorm") {
+    document
+      .getElementById("fullPage")
+      .setAttribute(
+        "style",
+        "background-image: url('./images/thunderstorm.jpg')"
+      );
+  }
+  if (description === "snow" || description === "light snow") {
+    document
+      .getElementById("fullPage")
+      .setAttribute("style", "background-image: url('./images/snow.jpg')");
+  }
+  if (description === "mist") {
+    document
+      .getElementById("fullPage")
+      .setAttribute("style", "background-image: url('./images/mist.jpg')");
+  }
+}
+
 function displayWeatherCondition(response) {
   let cityElement = document.querySelector("h2");
   let temperatureElement = document.querySelector("#temp-today");
@@ -126,6 +190,8 @@ function displayWeatherCondition(response) {
   weatherIconElement.setAttribute("src", response.data.condition.icon_url);
   weatherIconElement.setAttribute("alt", response.data.condition.icon);
   getForecast(response.data.coordinates);
+  let descriptionBackground = response.data.condition.description;
+  changeBackground(descriptionBackground);
 }
 
 function searchCity(city) {

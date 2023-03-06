@@ -14,6 +14,7 @@ body {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 15px;
   padding: 20px;
+  min-width: 467px;
 }
 .linkTestowy {
   color: brown;
@@ -39,6 +40,7 @@ body {
 }
 
 h1 {
+  font-size: 34px;
   font-weight: bolder;
 }
 h2 {
@@ -81,7 +83,7 @@ div.week-weather {
   border: 2px solid rgba(116, 150, 205, 1);
   border-radius: 44px;
   text-align: center;
-  padding: 10px;
+  padding: 8px;
   height: fit-content;
   width: fit-content;
   margin: 10px 5px;

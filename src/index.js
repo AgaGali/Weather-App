@@ -13,7 +13,7 @@ function setTime(trueTime) {
   return formattedTime;
 }
 let time = document.querySelector("div.time");
-time.innerHTML = `Current time ${setTime(date)}`;
+time.innerHTML = `Last updated ${setTime(date)}`;
 
 function setDay(trueDay) {
   let weekDays = [

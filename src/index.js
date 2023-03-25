@@ -109,6 +109,20 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
+switch (description) {
+  case "clear sky":
+    document
+      .getElementById("fullPage")
+      .setAttribute("style", "background-image: url('./images/clear-sky.jpg')");
+  case "few clouds":
+    document
+      .getElementById("fullPage")
+      .setAttribute(
+        "style",
+        "background-image: url('./images/few-clouds.jpg')"
+      );
+}
+
 function changeBackground(description) {
   console.log(description);
   if (description === "clear sky") {
